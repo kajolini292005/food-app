@@ -65,6 +65,12 @@ def foods():
     cursor.execute("SELECT * FROM foods")
     foods = cursor.fetchall()
     return render_template("food_list.html", foods=foods)
+    
+@app.route('/delete/<int:id>')
+def delete(id):
+    cursor.execute("DELETE FROM foods WHERE id = %s", (id,))
+    connection.commit()
+    return redirect('/foods')
 
 if __name__ == "__main__":
     app.run(debug=True)
