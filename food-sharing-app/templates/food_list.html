@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Available Food</title>
+</head>
+<body>
+
+<h2>Available Food Items</h2>
+
+<table border="1">
+    <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Location</th>
+        <th>Image</th>
+    </tr>
+
+    {% for food in foods %}
+    <tr>
+        <td>{{ food[1] }}</td>
+        <td>{{ food[2] }}</td>
+        <td>{{ food[3] }}</td>
+        <td>
+            {% if food[5] %}
+                <img src="{{ url_for('static', filename='uploads/' + food[5]) }}" width="100">
+            {% else %}
+                <p>No Image</p>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+<br>
+<a href="/">Back to Home</a>
+
+</body>
+</html>
