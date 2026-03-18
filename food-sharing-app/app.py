@@ -27,8 +27,7 @@ food_items = []
 def home():
     return render_template("index.html")
 
-
-UPLOAD_FOLDER = "static/uploads"
+UPLOAD_FOLDER = os.path.join(os.getcwd(), "static", "uploads")
 
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
@@ -45,7 +44,7 @@ def upload():
 
         filename = secure_filename(image.filename)
 
-        image_path = os.path.join("static/uploads", filename)
+        image_path = os.path.join(UPLOAD_FOLDER, filename)
 
         image.save(image_path)
 
